@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Zen Kaku Gothic Antique';
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 100%;
+    letter-spacing: 0;
+    overflow-x: hidden;
+}
+

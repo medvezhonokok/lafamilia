@@ -1,0 +1,251 @@
+.admin-container {
+    font-size: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Zen Kaku Gothic Antique';
+    font-weight: bold;
+    line-height: 100%;
+    letter-spacing: 0;
+}
+
+.admin-container button {
+    font-size: 20px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-lot-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.add-lot-btn:hover {
+    background-color: #45a049;
+}
+
+.lot-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lot-form h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.lot-form .form-group {
+    margin-bottom: 30px;
+}
+
+.lot-form .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.lot-form .form-group input[type="text"],
+.lot-form .form-group input[type="number"],
+.lot-form .form-group select,
+.lot-form .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+.lot-form .form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    justify-content: center;
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.save-btn:hover {
+    background-color: #45a049;
+}
+
+.cancel-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cancel-btn:hover {
+    background-color: #d32f2f;
+}
+
+.lots-table {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.lots-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lots-table th,
+.lots-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.lots-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.lots-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.lots-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.edit-btn {
+    width: 100%;
+    background-color: #2196F3;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 7px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.edit-btn:hover {
+    background-color: #0b7dda;
+}
+
+.delete-btn {
+    width: 100%;
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+.descriptors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.descriptor-tag {
+    padding: 8px 12px;
+    border-radius: 20px;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+.descriptor-tag.selected {
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.descriptor-tag.not-selected {
+    background-color: #f0f0f0;
+}
+
+.descriptor-name {
+    margin-right: 5px;
+}
+
+.checkmark {
+    font-weight: bold;
+}
+
+.descriptors-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.descriptors-list .descriptor-tag {
+    cursor: default;
+    padding: 5px 10px;
+    font-size: 0.8em;
+}
+
+.loading {
+    text-align: center;
+    padding: 50px;
+    font-size: 18px;
+    color: #666;
+}
+
+.error-message {
+    color: #d32f2f;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: normal;
+}
+
+.error-field {
+    border-color: #d32f2f !important;
+}
+
+.form-error {
+    background-color: #ffebee;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    color: #d32f2f;
+    border-left: 4px solid #d32f2f;
+}

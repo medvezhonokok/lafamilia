@@ -1,0 +1,27 @@
+.about-container {
+    padding: 0 5%;
+}
+
+.about-text-containers {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    line-height: 100%;
+}
+
+.about-text-containers div {
+    width: 37%;
+}
+
+@media (max-width: 768px) {
+    .about-text-containers {
+        flex-direction: column;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .about-text-containers div {
+        width: 100%;
+    }
+}

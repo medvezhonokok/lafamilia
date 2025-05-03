@@ -1,0 +1,54 @@
+.main-container {
+    background-image: url('./../../assets/indexBackground.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    position: relative;
+    margin: 0;
+}
+
+.main-container img {
+    width: 480px;
+    height: 416px;
+    margin-bottom: 30px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.shop-coffee-button {
+    padding: 12px 30px;
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    border-radius: 25px;
+    font-size: 24px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.shop-coffee-button:hover {
+    background-color: transparent;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .main-container img {
+        width: 300px;
+        height: auto;
+    }
+
+    .shop-coffee-button {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+}

@@ -1,0 +1,126 @@
+.order-samples-container {
+    background: #186E46;
+    color: white;
+    width: 80%;
+    margin: 5rem auto 0 auto;
+    border-radius: 3rem;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.order-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 64px;
+}
+
+.order-form {
+    width: 100%;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input {
+    font-family: 'Zen Kaku Gothic Antique';
+    font-weight: bold;
+    line-height: 100%;
+    letter-spacing: 0;
+    padding: 1rem;
+    border-radius: 2rem;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #888;
+    opacity: 1;
+}
+
+.form-textarea {
+    font-family: 'Zen Kaku Gothic Antique';
+    font-weight: bold;
+    line-height: 100%;
+    letter-spacing: 0;
+    padding: 1rem;
+    border-radius: 2rem;
+    border: none;
+    font-size: 1.5rem;
+    resize: vertical;
+    min-height: 120px;
+    background: #f8f8f8;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.submit-button {
+    background: white;
+    color: black;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .order-samples-container {
+        width: 80%;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .order-title {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .order-samples-container {
+        width: 90%;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        border-radius: 2rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .order-title {
+        font-size: 36px;
+        margin-bottom: 1.5rem;
+    }
+
+    .submit-button {
+        padding: 1rem 2rem;
+    }
+}

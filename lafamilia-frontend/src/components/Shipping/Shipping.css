@@ -1,0 +1,42 @@
+.shipping-container {
+    padding: 10rem 5%;
+}
+
+.shipping-description-container {
+    font-size: 32px;
+    line-height: 100%;
+}
+
+.shipping-items-container {
+    display: flex;
+    margin-top: 4rem;
+    width: 100%;
+    flex-direction: row;
+}
+
+.shipping-item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.shipping-item-weight {
+    background: #B33A31;
+    font-size: 30px;
+    border-radius: 2rem;
+    width: 12rem;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .shipping-items-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+}

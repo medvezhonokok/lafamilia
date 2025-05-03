@@ -1,0 +1,173 @@
+import React, {useState} from 'react';
+import './Lots.css';
+import ReactApexChart from 'react-apexcharts';
+
+const Lots = ({lots}) => {
+    const [expandedLotId, setExpandedLotId] = useState(null);
+
+    const formatEnumText = (text) => {
+        return text.toLowerCase()
+            .replace(/_/g, ' ')
+            .replace(/\b\w/g, char => char.toUpperCase());
+    };
+
+    const toggleLotExpand = (lotId) => {
+        setExpandedLotId(expandedLotId === lotId ? null : lotId);
+    };
+
+    const renderFlavorWheel = (descriptors) => {
+        if (!descriptors || descriptors.length === 0) return null;
+
+        const series = descriptors.map(desc => ({
+            x: desc.name,
+            y: 100,
+            fillColor: desc.colorHex
+        }));
+
+        const options = {
+            chart: {
+                type: 'radialBar',
+                height: 400,
+                animations: {
+                    enabled: true,
+                    easing: 'easeinout',
+                    speed: 800
+                }
+            },
+            plotOptions: {
+                radialBar: {
+                    startAngle: -120,
+                    endAngle: 120,
+                    hollow: {
+                        size: '40%',
+                    },
+                    track: {
+                        background: '#f8f8f8',
+                        strokeWidth: '70%',
+                        margin: 5,
+                    },
+                    dataLabels: {
+                        name: {
+                            show: true,
+                            fontSize: '12px',
+                            fontFamily: 'Arial, sans-serif',
+                            fontWeight: 600,
+                            color: '#333',
+                            offsetY: 5
+                        },
+                        value: {
+                            show: false
+                        },
+                        total: {
+                            show: false
+                        }
+                    },
+                    barSize: '60%',
+                }
+            },
+            fill: {
+                type: 'solid',
+                opacity: 0.9
+            },
+            stroke: {
+                lineCap: 'round',
+                width: 0
+            },
+            labels: series.map(item => item.x),
+            colors: series.map(item => item.fillColor),
+            legend: {
+                show: false
+            },
+            responsive: [{
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        height: 350
+                    },
+                    plotOptions: {
+                        radialBar: {
+                            dataLabels: {
+                                name: {
+                                    fontSize: '10px'
+                                }
+                            }
+                        }
+                    }
+                }
+            }]
+        };
+
+        return (
+            <div className="flavor-wheel-container">
+                <ReactApexChart
+                    options={options}
+                    series={series.map(item => item.y)}
+                    type="radialBar"
+                    height={350}
+                />
+                <div className="descriptor-labels">
+                    {series.map((descriptor, index) => (
+                        <div key={index} className="descriptor-label">
+                            <span
+                                className="color-marker"
+                                style={{backgroundColor: descriptor.fillColor}}
+                            />
+                            <span className="descriptor-name">{descriptor.x}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    };
+
+    return (
+        <div className='lots-container'>
+            <div className='lots-grid'>
+                {lots.map((lot) => (
+                    <div
+                        key={lot.id}
+                        className={`lot-card ${expandedLotId === lot.id ? 'expanded' : ''}`}
+                        onClick={() => toggleLotExpand(lot.id)}
+                    >
+                        <div className={`card-content ${expandedLotId === lot.id ? 'expanded' : ''}`}>
+                            {expandedLotId !== lot.id ? (
+                                <>
+                                    <div className='lot-header'>
+                                        <div>{lot.price + "$ for kg"} <span
+                                            style={{fontSize: "18px", color: "grey"}}>EXW</span></div>
+                                        <p style={{margin: "0"}}>Q87</p>
+                                    </div>
+
+                                    <div className='lot-header-2'>
+                                        <div style={{padding: "20px"}}>
+                                            <b>{formatEnumText(lot.variety)}</b>
+                                            <br/>
+                                            <span style={{fontWeight: "400"}}>{formatEnumText(lot.processing)}</span>
+                                        </div>
+                                    </div>
+                                    <div style={{padding: "20px", fontSize: "24px", lineHeight: "normal"}}>
+                                        {lot.description}
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="expanded-view">
+                                    <div className="ratings-grid">
+                                        {['Aroma', 'Flavor', 'Aftertaste', 'Acidity', 'Body', 'Balance'].map((item) => (
+                                            <div key={item} className="rating-item">
+                                                <span>{item}</span>
+                                                {lot[item.toLowerCase()]}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    {renderFlavorWheel(lot.flavorDescriptors)}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default Lots;

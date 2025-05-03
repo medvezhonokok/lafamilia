@@ -1,0 +1,19 @@
+.green {
+    color: #186E46;
+}
+
+.text {
+    font-size: 30px !important;
+    line-height: normal;
+}
+
+@media (max-width: 768px) {
+    .text {
+        font-size: 25px !important;
+    }
+}
+
+.mobile-container {
+    display: flex;
+    flex-direction: column;
+}

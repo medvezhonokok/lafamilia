@@ -1,0 +1,73 @@
+.info-container {
+    background-image: url('./../../assets/bags.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    color: white;
+    padding: 0 4rem;
+}
+
+.info-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 8rem;
+}
+
+.info-title {
+    font-size: 3rem;
+    letter-spacing: 4px;
+    margin-bottom: 2rem;
+    text-align: right;
+    line-height: 1.2;
+}
+
+.info-text {
+    text-align: right;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.info-button {
+    padding: 1rem 2.5rem;
+    background-color: #B33A31;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    align-self: center;
+    transition: all 0.3s ease;
+}
+
+.info-button:hover {
+    background-color: #a8342c;
+}
+
+@media (max-width: 768px) {
+    .info-container {
+        padding: 0 2rem;
+    }
+
+    .info-content {
+        padding-top: 4rem;
+    }
+
+    .info-title {
+        text-align: center;
+        font-size: 2.5rem;
+    }
+
+    .info-text {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+}
