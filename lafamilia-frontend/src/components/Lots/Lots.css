@@ -162,6 +162,17 @@
         gap: 15px;
         margin-bottom: 20px;
     }
+
+    .filter-group {
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 1rem;
+        padding: 10px;
+    }
+
+    #variety-search {
+        border: none;
+    }
 }
 
 .descriptor-labels {
@@ -184,4 +195,42 @@
     width: 12px;
     height: 12px;
     border-radius: 3px;
+}
+
+.filters-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    justify-content: space-between;
+}
+
+.filter-group {
+    border: 1px solid black;
+    padding: 17px;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.filter-group select,
+.filter-group input {
+    font-size: 20px;
+}
+
+.filter-group input {
+    border: none;
+    width: 73%
+}
+
+.filter-group input:focus{
+    outline: none;
 }

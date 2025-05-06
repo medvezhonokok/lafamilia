@@ -1,9 +1,25 @@
 import React, {useState} from 'react';
 import './Lots.css';
+import filter from "../../assets/filter.svg";
+import loop from "../../assets/loop.svg";
 import ReactApexChart from 'react-apexcharts';
+import {LotVariety, LotProcessing} from "../AdminPage/AdminPage";
 
 const Lots = ({lots}) => {
     const [expandedLotId, setExpandedLotId] = useState(null);
+    const [processingFilter, setProcessingFilter] = useState('ALL');
+    const [varietySearch, setVarietySearch] = useState('');
+
+    const filteredLots = lots.filter(lot => {
+        const matchesProcessing = processingFilter === 'ALL' ||
+            lot.processing === processingFilter;
+
+        const matchesVariety = varietySearch === '' ||
+            lot.variety.toLowerCase().includes(varietySearch.toLowerCase()) ||
+            LotVariety[lot.variety]?.displayName.toLowerCase().includes(varietySearch.toLowerCase());
+
+        return matchesProcessing && matchesVariety;
+    });
 
     const formatEnumText = (text) => {
         return text.toLowerCase()
@@ -122,8 +138,38 @@ const Lots = ({lots}) => {
 
     return (
         <div className='lots-container'>
+            <div className="filters-panel">
+                <div className="filter-group">
+                    <img style={{height: '60%', margin: 'auto 0'}} src={filter} alt='filter'/>
+                    <select
+                        style={{
+                            border: 'none'
+                        }}
+                        id="processing-filter"
+                        value={processingFilter}
+                        onChange={(e) => setProcessingFilter(e.target.value)}
+                    >
+                        <option value="ALL">Filter</option>
+                        {Object.entries(LotProcessing).map(([key, value]) => (
+                            <option key={key} value={key}>
+                                {value.displayName}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="filter-group">
+                    <img src={loop}/>
+                    <input
+                        id="variety-search"
+                        type="text"
+                        value={varietySearch}
+                        onChange={(e) => setVarietySearch(e.target.value)}
+                    />
+                </div>
+            </div>
             <div className='lots-grid'>
-                {lots.map((lot) => (
+                {filteredLots.map((lot) => (
                     <div
                         key={lot.id}
                         className={`lot-card ${expandedLotId === lot.id ? 'expanded' : ''}`}
@@ -141,7 +187,11 @@ const Lots = ({lots}) => {
                                                 style={{fontSize: "18px", color: "grey"}}>EXW</span></div>
                                             <p style={{margin: "0"}}>Q87</p>
                                         </div>
-                                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                                        <div style={{
+                                            display: 'flex',
+                                            flexDirection: 'row',
+                                            justifyContent: 'space-between'
+                                        }}>
                                             {formatEnumText(lot.variety)}
                                             <span>El Paraiso</span>
                                         </div>
@@ -158,9 +208,11 @@ const Lots = ({lots}) => {
                                                 {formatEnumText(lot.department)}
                                             </div>
                                             <div style={{display: 'flex', flexDirection: 'column'}}>
-                                                <span style={{fontSize: "18px",
+                                                <span style={{
+                                                    fontSize: "18px",
                                                     height: "28px",
-                                                    color: "#766F6B",}}>Process</span>
+                                                    color: "#766F6B",
+                                                }}>Process</span>
                                                 {formatEnumText(lot.processing)}
                                             </div>
                                         </div>

@@ -637,7 +637,7 @@ const AdminPage = () => {
     );
 };
 
-const LotVariety = {
+export const LotVariety = {
     GEISHA: {displayName: "Geisha"},
     PINK_BOURBON: {displayName: "Pink bourbon"},
     YELLOW_BOURBON: {displayName: "Yellow bourbon"},
@@ -654,7 +654,7 @@ const LotVariety = {
     YIRGACHEFFE: {displayName: "Yirgacheffe"}
 };
 
-const LotProcessing = {
+export const LotProcessing = {
     NATURAL: {displayName: "Natural"},
     NATURAL_ANAEROBIC: {displayName: "Natural anaerobic"},
     HONEY: {displayName: "Honey"},
