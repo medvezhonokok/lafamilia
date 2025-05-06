@@ -30,6 +30,12 @@
     flex-direction: column;
 }
 
+.form-input, .form-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
 .form-input {
     font-family: 'Zen Kaku Gothic Antique';
     font-weight: bold;
@@ -103,6 +109,21 @@
 }
 
 @media (max-width: 480px) {
+    .form-input, .form-textarea {
+        min-width: 0;
+    }
+
+    .order-samples-container {
+        width: 90%;
+        padding: 1.5rem;
+        overflow-x: hidden;
+    }
+
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
     .order-samples-container {
         width: 90%;
         padding: 1.5rem;

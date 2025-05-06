@@ -47,6 +47,7 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 20px;
+    width: auto;
     transition: border-color 0.3s;
 }
 
