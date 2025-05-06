@@ -1,0 +1,14 @@
+.shop-footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    min-width: 120px;
+}
+
+.shop-footer-links a {
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}

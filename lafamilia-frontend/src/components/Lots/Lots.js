@@ -133,16 +133,36 @@ const Lots = ({lots}) => {
                             {expandedLotId !== lot.id ? (
                                 <>
                                     <div className='lot-header'>
-                                        <div>{lot.price + "$ for kg"} <span
-                                            style={{fontSize: "18px", color: "grey"}}>EXW</span></div>
-                                        <p style={{margin: "0"}}>Q87</p>
+                                        <div style={{
+                                            display: "flex",
+                                            justifyContent: "space-between"
+                                        }}>
+                                            <div>{lot.price + "$ for kg"} <span
+                                                style={{fontSize: "18px", color: "grey"}}>EXW</span></div>
+                                            <p style={{margin: "0"}}>Q87</p>
+                                        </div>
+                                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                                            {formatEnumText(lot.variety)}
+                                            <span>El Paraiso</span>
+                                        </div>
                                     </div>
 
                                     <div className='lot-header-2'>
                                         <div style={{padding: "20px"}}>
-                                            <b>{formatEnumText(lot.variety)}</b>
-                                            <br/>
-                                            <span style={{fontWeight: "400"}}>{formatEnumText(lot.processing)}</span>
+                                            <div style={{display: 'flex', flexDirection: 'column'}}>
+                                                <span style={{
+                                                    fontSize: "18px",
+                                                    height: "28px",
+                                                    color: "#766F6B",
+                                                }}>Region</span>
+                                                {formatEnumText(lot.department)}
+                                            </div>
+                                            <div style={{display: 'flex', flexDirection: 'column'}}>
+                                                <span style={{fontSize: "18px",
+                                                    height: "28px",
+                                                    color: "#766F6B",}}>Process</span>
+                                                {formatEnumText(lot.processing)}
+                                            </div>
                                         </div>
                                     </div>
                                     <div style={{padding: "20px", fontSize: "24px", lineHeight: "normal"}}>

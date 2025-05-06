@@ -12,9 +12,7 @@ const ShopInfo = () => {
                 letterSpacing: "1px",
                 textAlign: "center"
             }}>
-                Discover the finest Colombian coffee available on the market, custom-packaged to suit your
-                preferences
-                and delivered throughout the U.S. and Canada.
+                Experience premium Colombian coffee, freshly roasted and tailor-packaged to your taste — shipped worldwide for your convenience.
             </div>
         </div>
     );

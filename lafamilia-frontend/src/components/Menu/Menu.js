@@ -3,17 +3,18 @@ import './Menu.css';
 import logo from '../../assets/textLogo.svg';
 import {FaBars, FaTimes} from 'react-icons/fa';
 
-const Menu = () => {
+const Menu = ({index}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div className='menu'>
-            <img  style={{cursor: "pointer"}} onClick={() => window.location.href = '/'} src={logo} alt='logo' className='menu-logo'/>
+            <img style={{cursor: "pointer"}} onClick={() => window.location.href = '/'} src={logo} alt='logo'
+                 className='menu-logo'/>
 
             <div className='desktop-menu'>
-                <a href='/'>About Us</a>
-                <a href='/shop'>Lots</a>
-                <a href='#'>WhatsApp</a>
+                <a href='/' className={`${index ? 'green' : 'black'}`}>About Us</a>
+                <a href='/shop' className={`${!index ? 'green' : 'black'}`}>Lots</a>
+                <a href="https://wa.me/573176444299" className='whatsapp-button'>Contact Us</a>
             </div>
 
             <button
@@ -21,13 +22,15 @@ const Menu = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Menu"
             >
-                {isOpen ? <FaTimes size={24}/> : <FaBars size={24}/>}
+                {isOpen ? <FaTimes size={30}/> : <FaBars size={30}/>}
             </button>
 
             <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
                 <a href='/' onClick={() => setIsOpen(false)}>About Us</a>
-                <a href='#' onClick={() => setIsOpen(false)}>Lots</a>
-                <a href='#' onClick={() => setIsOpen(false)}>WhatsApp</a>
+                <a href='/shop' onClick={() => setIsOpen(false)}>Lots</a>
+                <a href="https://wa.me/573176444299">
+                    Contact Us
+                </a>
             </div>
         </div>
     );

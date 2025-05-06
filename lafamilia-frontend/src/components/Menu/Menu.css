@@ -32,32 +32,18 @@
     gap: 2rem;
 }
 
-.menu-buttons a {
-    color: #333;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s;
-    position: relative;
-}
-
-.menu-buttons a:hover {
-    color: #B33A31;
-}
-
-.menu-buttons a:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #B33A31;
-    transition: width 0.3s;
-}
-
-.menu-buttons a:hover:after {
+.desktop-menu {
+    font-size: 24px;
     width: 100%;
+    justify-content: right;
+    display: flex;
+    gap: 2rem;
 }
+
+.desktop-menu a {
+    text-decoration: none;
+}
+
 
 .mobile-menu-icon {
     display: none;
@@ -99,6 +85,8 @@
     }
 
     .mobile-menu-button {
+        margin-top: 0.4rem;
+        color: black;
         display: flex;
     }
 
@@ -124,4 +112,12 @@
     .menu {
         padding: 1rem;
     }
+}
+
+.whatsapp-button {
+    background: #186E46;
+    color: white;
+    border-radius: 2rem;
+    width: auto;
+    padding: 0 1rem;
 }

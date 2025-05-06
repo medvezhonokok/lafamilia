@@ -1,0 +1,43 @@
+.production-stage-container {
+    text-align: center;
+    padding-top: 5rem;
+}
+
+.stage-card img {
+    width: 100%;
+}
+
+.production-stage-container {
+    padding: 2rem;
+    text-align: center;
+}
+
+.stages-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-top: 2rem;
+}
+
+.stage-card {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.stage-card p {
+    line-height: 1.5;
+}
+
+@media (min-width: 992px) {
+    .stages-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stage-card {
+        flex: 1;
+        min-width: 180px;
+        max-width: 200px;
+    }
+}

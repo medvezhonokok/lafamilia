@@ -5,15 +5,19 @@ import Main from "../Main/Main";
 import About from "../About/About";
 import Shipping from "../Shipping/Shipping";
 import Info from "../Info/Info";
+import ProductionStage from "../ProductionStage/ProductionStage";
+import Footer from "../Footer/Footer";
 
 const IndexPage = () => {
     return (
         <div>
-            <Menu/>
+            <Menu index={true}/>
             <Main/>
             <About/>
             <Shipping/>
             <Info/>
+            <ProductionStage/>
+            <Footer/>
         </div>
     );
 };

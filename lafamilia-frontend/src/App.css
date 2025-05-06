@@ -2,6 +2,10 @@
     color: #186E46;
 }
 
+.black {
+    color: black;
+}
+
 .text {
     font-size: 30px !important;
     line-height: normal;

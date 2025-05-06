@@ -39,18 +39,10 @@ public class LotController {
     }
 
     @PostMapping("/delete/{lotId}")
-    public void deleteLot(@PathVariable long lotId, HttpSession session, BindingResult bindingResult) {
+    public void deleteLot(@PathVariable long lotId, HttpSession session) {
         if (hasUser(session)) {
-            lotCredentialsValidator.validateLotId(lotId, bindingResult);
-
-            if (bindingResult.hasErrors()) {
-                throw new ValidationException(bindingResult);
-            }
-
+            lotCredentialsValidator.validateLotId(lotId);
             lotService.deleteById(lotId);
-        } else {
-            bindingResult.addError(new ObjectError("user", "User is not present"));
-            throw new ValidationException(bindingResult);
         }
     }
 
@@ -59,7 +51,7 @@ public class LotController {
                       BindingResult bindingResult) {
         if (hasUser(session)) {
             lotCredentialsValidator.validate(credentials, bindingResult);
-            lotCredentialsValidator.validateLotId(lotId, bindingResult);
+            lotCredentialsValidator.validateLotId(lotId);
 
             if (bindingResult.hasErrors()) {
                 throw new ValidationException(bindingResult);

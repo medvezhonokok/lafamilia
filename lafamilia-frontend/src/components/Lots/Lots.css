@@ -1,5 +1,4 @@
 .lots-container {
-    padding: 20px;
     max-width: 1200px;
     margin: 5rem auto 0 auto;
 }
@@ -17,14 +16,19 @@
     border-radius: 1rem;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
 }
 
 .lot-header {
+    color: white;
+    background: #B33A31;
     padding: 20px;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    border-top-left-radius: 0.9rem;
+    border-top-right-radius: 0.9rem;
 }
 
 .lot-header-2 {
@@ -40,7 +44,9 @@
 
     .lot-card {
         max-width: 100%;
+        font-size: 20px !important;
     }
+
 }
 
 
@@ -148,6 +154,13 @@
 
     .category-name {
         font-size: 12px;
+    }
+
+    .ratings-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
     }
 }
 

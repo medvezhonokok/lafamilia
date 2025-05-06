@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './AdminPage.css';
 import * as client from '../../client/client';
 import LoginForm from "../LoginForm/LoginForm";
@@ -51,7 +51,31 @@ const AdminPage = () => {
         }
     }, [jwtToken]);
 
+    const addFormRef = useRef(null);
+    const editFormRef = useRef(null);
+    const [isFirstAddOpen, setIsFirstAddOpen] = useState(true);
+    const [isFirstEditOpen, setIsFirstEditOpen] = useState(true);
+
+    useEffect(() => {
+        if (showAddForm && isFirstAddOpen && addFormRef.current) {
+            addFormRef.current.scrollIntoView({behavior: 'smooth', block: 'start'});
+            setIsFirstAddOpen(false);
+        } else if (!showAddForm) {
+            setIsFirstAddOpen(true);
+        }
+    }, [showAddForm, isFirstAddOpen]);
+
+    useEffect(() => {
+        if (editingLot && isFirstEditOpen && editFormRef.current) {
+            editFormRef.current.scrollIntoView({behavior: 'smooth', block: 'start'});
+            setIsFirstEditOpen(false);
+        } else if (!editingLot) {
+            setIsFirstEditOpen(true);
+        }
+    }, [editingLot, isFirstEditOpen]);
+
     const handleEdit = (lot) => {
+        setShowAddForm(false);
         setBackendErrors({});
         setEditingLot({
             ...lot,
@@ -92,7 +116,7 @@ const AdminPage = () => {
                 if (err.response?.data) {
                     setBackendErrors(processBackendErrors(err.response.data));
                 } else {
-                    setBackendErrors({ form: 'An unexpected error occurred' });
+                    setBackendErrors({form: 'An unexpected error occurred'});
                 }
             });
     };
@@ -138,7 +162,7 @@ const AdminPage = () => {
                 if (err.response?.data) {
                     setBackendErrors(processBackendErrors(err.response.data));
                 } else {
-                    setBackendErrors({ form: 'An unexpected error occurred' });
+                    setBackendErrors({form: 'An unexpected error occurred'});
                 }
             });
     };
@@ -193,14 +217,16 @@ const AdminPage = () => {
                     <h1>Welcome, {user.login}!</h1>
                     <button
                         className="add-lot-btn"
-                        onClick={() => setShowAddForm(true)}
-                    >
+                        onClick={() => {
+                            setShowAddForm(true);
+                            setEditingLot(false);
+                        }}>
                         Add New Lot
                     </button>
                 </div>
 
                 {showAddForm && (
-                    <div className="lot-form">
+                    <div className="lot-form" ref={addFormRef}>
                         <h2>Add New Lot</h2>
                         {renderFormError()}
                         <div className="form-group">
@@ -384,7 +410,7 @@ const AdminPage = () => {
                 )}
 
                 {editingLot && (
-                    <div className="lot-form">
+                    <div className="lot-form" ref={editFormRef}>
                         <h2>Edit Lot</h2>
                         {renderFormError()}
                         <div className="form-group">

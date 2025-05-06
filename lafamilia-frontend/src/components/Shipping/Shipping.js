@@ -45,7 +45,7 @@ const Shipping = ({isMobile}) => {
                             <div className='shipping-item-weight' style={{fontSize: "30px"}}>
                                 {item.weight}
                             </div>
-                            <div className='text' style={{lineHeight: "normal"}}>
+                            <div className='text' style={{lineHeight: "normal", textAlign: "justify"}}>
                                 {item.text}
                             </div>
                         </div>

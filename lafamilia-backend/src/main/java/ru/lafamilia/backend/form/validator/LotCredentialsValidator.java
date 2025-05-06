@@ -9,6 +9,7 @@ import ru.lafamilia.backend.model.FlavorDescriptor;
 import ru.lafamilia.backend.repository.FlavorDescriptorRepository;
 import ru.lafamilia.backend.service.LotService;
 
+import javax.validation.ValidationException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -94,9 +95,9 @@ public class LotCredentialsValidator implements Validator {
         }
     }
 
-    public void validateLotId(Long lotId, BindingResult bindingResult) {
+    public void validateLotId(Long lotId) {
         if (lotId == null || lotService.findById(lotId) == null) {
-            bindingResult.rejectValue("lotId", "lotId.not.found", "No such lot.");
+            throw new ValidationException("Cannot find lot");
         }
     }
 }

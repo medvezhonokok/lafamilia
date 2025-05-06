@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {toast, ToastContainer} from 'react-toastify';
+import React, { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useForm} from '@formspree/react';
+import { useForm } from '@formspree/react';
 import './OrderSamples.css';
 
 const OrderSamples = () => {
     const [state, handleSubmit] = useForm("manoeyrp");
+    const [formErrors, setFormErrors] = useState({});
+    const [touchedFields, setTouchedFields] = useState({});
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -14,17 +16,76 @@ const OrderSamples = () => {
         info: ''
     });
 
+    // Валидация формы
+    const validateForm = () => {
+        const errors = {};
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
+
+        if (!formData.name.trim()) errors.name = 'Name is required';
+        if (!formData.phone.trim()) {
+            errors.phone = 'Phone is required';
+        } else if (!phoneRegex.test(formData.phone)) {
+            errors.phone = 'Please enter a valid phone number';
+        }
+        if (!formData.email.trim()) {
+            errors.email = 'Email is required';
+        } else if (!emailRegex.test(formData.email)) {
+            errors.email = 'Please enter a valid email address';
+        }
+
+        setFormErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
     const handleChange = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
             [name]: value
         }));
+
+        // Валидация при изменении (только для тронутых полей)
+        if (touchedFields[name]) {
+            validateForm();
+        }
+    };
+
+    const handleBlur = (e) => {
+        const { name } = e.target;
+        setTouchedFields(prev => ({
+            ...prev,
+            [name]: true
+        }));
+        validateForm();
     };
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await handleSubmit(e);
+
+        // Помечаем все поля как тронутые перед валидацией
+        const allFieldsTouched = Object.keys(formData).reduce((acc, field) => {
+            acc[field] = true;
+            return acc;
+        }, {});
+        setTouchedFields(allFieldsTouched);
+
+        if (!validateForm()) {
+            toast.error('Please fix the errors in the form', {
+                position: "top-center",
+                autoClose: 5000,
+            });
+            return;
+        }
+
+        try {
+            await handleSubmit(e);
+        } catch (error) {
+            toast.error('Failed to submit the form. Please try again later.', {
+                position: "top-center",
+                autoClose: 5000,
+            });
+        }
     };
 
     useEffect(() => {
@@ -36,71 +97,78 @@ const OrderSamples = () => {
                 company: '',
                 info: ''
             });
-            toast.success('Your order has been sent successfully!', {
+            setTouchedFields({});
+            toast.success('Success! We will contact you shortly.', {
                 position: "top-center",
                 autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
             });
         }
     }, [state.succeeded]);
 
     useEffect(() => {
         if (state.errors && state.errors.length > 0) {
-            toast.error('Failed to send order. Please try again.', {
+            const errorMessage = state.errors[0]?.message ||
+                'There was an error submitting your form. Please try again.';
+            toast.error(errorMessage, {
                 position: "top-center",
                 autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
             });
         }
     }, [state.errors]);
 
     return (
         <div className='order-samples-container'>
-            <ToastContainer/>
+            <ToastContainer />
             <h1 className='order-title'>Order Samples</h1>
 
-            <form className='order-form' onSubmit={onSubmit}>
+            <form className='order-form' onSubmit={onSubmit} noValidate>
                 <div className='form-grid'>
                     <div className='form-group'>
                         <input
                             name='name'
                             type='text'
-                            placeholder='Name'
+                            placeholder='Name *'
                             value={formData.name}
                             onChange={handleChange}
-                            className='form-input'
+                            onBlur={handleBlur}
+                            className={`form-input ${touchedFields.name && formErrors.name ? 'error' : ''}`}
                             required
                         />
+                        {touchedFields.name && formErrors.name && (
+                            <span className="error-message">{formErrors.name}</span>
+                        )}
                     </div>
 
                     <div className='form-group'>
                         <input
                             name='phone'
                             type='tel'
-                            placeholder='Phone'
+                            placeholder='Phone *'
                             value={formData.phone}
                             onChange={handleChange}
-                            className='form-input'
+                            onBlur={handleBlur}
+                            className={`form-input ${touchedFields.phone && formErrors.phone ? 'error' : ''}`}
                             required
                         />
+                        {touchedFields.phone && formErrors.phone && (
+                            <span className="error-message">{formErrors.phone}</span>
+                        )}
                     </div>
 
                     <div className='form-group'>
                         <input
                             name='email'
                             type='email'
-                            placeholder='Email'
+                            placeholder='Email *'
                             value={formData.email}
                             onChange={handleChange}
-                            className='form-input'
+                            onBlur={handleBlur}
+                            className={`form-input ${touchedFields.email && formErrors.email ? 'error' : ''}`}
                             required
                         />
+                        {touchedFields.email && formErrors.email && (
+                            <span className="error-message">{formErrors.email}</span>
+                        )}
                     </div>
 
                     <div className='form-group'>
@@ -110,6 +178,7 @@ const OrderSamples = () => {
                             placeholder='Company Name'
                             value={formData.company}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                             className='form-input'
                         />
                     </div>
@@ -121,6 +190,7 @@ const OrderSamples = () => {
                         placeholder='Additional Information'
                         value={formData.info}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         className='form-textarea'
                         rows={4}
                     />
@@ -132,7 +202,14 @@ const OrderSamples = () => {
                         className='submit-button'
                         disabled={state.submitting}
                     >
-                        {state.submitting ? 'Sending...' : 'Confirm'}
+                        {state.submitting ? (
+                            <>
+                                <span className="spinner"></span>
+                                Sending...
+                            </>
+                        ) : (
+                            'Submit Request'
+                        )}
                     </button>
                 </div>
             </form>

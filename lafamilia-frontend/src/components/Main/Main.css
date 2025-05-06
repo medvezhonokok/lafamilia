@@ -4,8 +4,6 @@
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
-    width: 100vw;
-    max-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,7 +20,6 @@
     height: 416px;
     margin-bottom: 30px;
     max-width: 100%;
-    object-fit: contain;
 }
 
 .shop-coffee-button {
@@ -43,8 +40,6 @@
 
 @media (max-width: 768px) {
     .main-container img {
-        width: 300px;
-        height: auto;
     }
 
     .shop-coffee-button {
