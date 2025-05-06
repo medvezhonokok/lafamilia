@@ -143,7 +143,8 @@ const Lots = ({lots}) => {
                     <img style={{height: '60%', margin: 'auto 0'}} src={filter} alt='filter'/>
                     <select
                         style={{
-                            border: 'none'
+                            border: 'none',
+                            width: '100%'
                         }}
                         id="processing-filter"
                         value={processingFilter}
