@@ -1,6 +1,6 @@
 import React from 'react';
 import './ShopFooter.css';
-import whiteLogo from "../../assets/blackLogo.svg";
+import blackLogo from "../../assets/blackLogo.svg";
 
 const ShopFooter = () => {
     return (
@@ -8,12 +8,12 @@ const ShopFooter = () => {
             marginTop: "5rem"
         }}>
             <div className='footer-row'>
-                <img src={whiteLogo} alt="La Familia Cafe Logo" className='footer-logo'/>
+                <img src={blackLogo} alt="La Familia Cafe Logo" className='footer-logo'/>
 
                 <div className='footer-address'>
                     Cra. 100 #11-60, Holguines Trade Center,<br/>
                     Torre Farallones of 311, Cali<br/>
-                    <a href="tel:+57 3176444299">+57 317 644 42 99</a>
+                    <a style={{color: "black"}} href="tel:+57 3176444299">+57 317 644 42 99</a>
                 </div>
 
                 <div className='footer-links-group'>

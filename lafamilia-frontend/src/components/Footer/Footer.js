@@ -1,18 +1,21 @@
 import React from 'react';
 import './Footer.css';
-import whiteLogo from './../../assets/whiteLogo1.svg';
+import whiteLogo from '../../assets/whiteLogo.svg';
 
 const Footer = () => {
     return (
         <div className='footer-container'>
             <div className='footer-content'>
                 <div className='footer-row'>
-                    <img src={whiteLogo} alt="La Familia Cafe Logo" className='footer-logo'/>
+                    <div className='footer-col-1'>
+                        <img src={whiteLogo} alt="La Familia Cafe Logo" className='footer-logo'/>
 
-                    <div className='footer-address'>
-                        Cra. 100 #11-60, Holguines Trade Center,<br/>
-                        Torre Farallones of 311, Cali<br/>
-                        <a href="tel:+57 3176444299">+57 317 644 42 99</a>
+                        <div className='footer-address'>
+                            Cra. 100 #11-60, Holguines Trade Center,<br/>
+                            Torre Farallones of 311, Cali<br/>
+                            <br/>
+                            <a style={{color: "white"}} href="tel:+57 3176444299">+57 317 644 42 99</a>
+                        </div>
                     </div>
 
                     <div className='footer-links-group'>
