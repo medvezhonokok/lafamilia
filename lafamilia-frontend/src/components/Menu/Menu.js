@@ -12,12 +12,15 @@ const Menu = ({index}) => {
         <>
             <div className='menu'>
                 <div className='menu-container'>
-                    <img
-                        src={logo}
-                        alt='logo'
-                        className='menu-logo'
-                        onClick={() => window.location.href = '/'}
-                    />
+                    <p className='menu-logo' onClick={() => window.location.href = '/'}>
+                        La Familia Café
+                    </p>
+                    {/*<img*/}
+                    {/*    src={logo}*/}
+                    {/*    alt='logo'*/}
+                    {/*    className='menu-logo'*/}
+                    {/*    onClick={() => window.location.href = '/'}*/}
+                    {/*/>*/}
 
                     <div className='desktop-menu'>
                         <a href='/' className={index ? 'menu-link active' : 'menu-link'}>About Us</a>

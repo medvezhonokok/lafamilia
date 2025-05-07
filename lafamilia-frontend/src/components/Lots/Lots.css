@@ -12,7 +12,7 @@
 
 .lot-card {
     font-size: 30px;
-    border: 1.5px solid #186E46;
+    border: 3px solid #186E46;
     border-radius: 1rem;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -27,8 +27,8 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    border-top-left-radius: 0.9rem;
-    border-top-right-radius: 0.9rem;
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
 }
 
 .lot-description {
@@ -39,7 +39,7 @@
 
 .lot-header-2 {
     padding: 5px 20px;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid black;
 }
 
 @media (max-width: 768px) {
