@@ -1,19 +1,40 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Menu.css';
-import logo from '../../assets/textLogo.svg';
-import {FaBars, FaTimes, FaWhatsapp} from 'react-icons/fa';
-import {Link} from "react-router-dom";
-import IndexPage from "../IndexPage/IndexPage";
+import { FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-const Menu = ({index}) => {
+const Menu = ({ index }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const [visible, setVisible] = useState(true);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling down
+                setVisible(false);
+            } else if (currentScrollY < lastScrollY || currentScrollY < 10) {
+                // Scrolling up or at top of page
+                setVisible(true);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [lastScrollY]);
 
     const scrollToShipping = () => {
         setIsOpen(false);
-        navigate('/'); // Переходим на главную
-        setTimeout(() => { // Даем время на рендер
+        navigate('/');
+        setTimeout(() => {
             const element = document.getElementById('shipping');
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
@@ -23,7 +44,7 @@ const Menu = ({index}) => {
 
     return (
         <>
-            <div className='menu'>
+            <div className={`menu ${visible ? 'visible' : 'hidden'}`}>
                 <div className='menu-container'>
                     <p className='menu-logo' onClick={() => window.location.href = '/'}>
                         La Familia Café
@@ -32,7 +53,10 @@ const Menu = ({index}) => {
                     <div className='desktop-menu'>
                         <a href='/' className={index ? 'menu-link active' : 'menu-link'}>About Us</a>
                         <a href='/shop' className={!index ? 'menu-link active' : 'menu-link'}>Lots</a>
-                        <a href='/#shipping' className='menu-link'>Shipping</a>
+                        <a href='/#shipping' className='menu-link' onClick={(e) => {
+                            e.preventDefault();
+                            scrollToShipping();
+                        }}>Shipping</a>
                         <a href="https://wa.me/573176444299" className='whatsapp-button'>
                             <FaWhatsapp className="whatsapp-icon"/> Contact Us
                         </a>
@@ -40,9 +64,7 @@ const Menu = ({index}) => {
 
                     <button
                         className={`mobile-menu-button ${isOpen ? 'open' : ''}`}
-                        style={{
-                            marginTop: "0.5rem"
-                        }}
+                        style={{ marginTop: "0.5rem" }}
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Menu"
                     >
@@ -60,7 +82,7 @@ const Menu = ({index}) => {
                     <a href='/shop' onClick={() => setIsOpen(false)} className="mobile-menu-link">
                         Lots
                     </a>
-                    <a href='/#shipping' className="mobile-menu-link" onClick={scrollToShipping}>Shipping</a>
+                    <div className="mobile-menu-link" onClick={scrollToShipping}>Shipping</div>
                     <a href="https://wa.me/573176444299" className='mobile-whatsapp' onClick={() => setIsOpen(false)}>
                         <FaWhatsapp className="whatsapp-icon"/> Contact Us
                     </a>

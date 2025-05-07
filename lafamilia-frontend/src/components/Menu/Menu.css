@@ -1,5 +1,5 @@
 .menu {
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     background: white;
@@ -8,6 +8,19 @@
     height: 80px;
     display: flex;
     justify-content: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu.visible {
+    transform: translateY(0);
+}
+
+.menu.hidden {
+    transform: translateY(-100%);
+}
+
+body {
+    padding-top: 80px;
 }
 
 .menu-container {
@@ -20,9 +33,11 @@
 }
 
 .menu-logo {
-    font-size: 3rem;
+    font-size: 2.5rem;
     cursor: pointer;
     transition: transform 0.3s ease;
+    font-weight: 600;
+    color: #333;
 }
 
 .menu-logo:hover {
@@ -36,7 +51,7 @@
 }
 
 .menu-link {
-    font-size: 2rem !important;
+    font-size: 1.6rem;
     text-decoration: none;
     color: #333;
     transition: color 0.2s ease;
@@ -44,37 +59,23 @@
     padding: 0.5rem 0;
 }
 
-.menu-link:hover {
-    color: #186E46;
-}
 
 .menu-link.active {
     color: #186E46;
-}
-
-.menu-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-
-    background-color: #186E46;
 }
 
 .whatsapp-button {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    height: 2rem;
     background: #25D366;
     color: white;
     border-radius: 25px;
     padding: 0.6rem 1.2rem;
-    font-weight: 500;
     transition: all 0.2s ease;
-    height: 2rem;
-    font-size: 2rem;
     text-decoration: none;
+    font-size: 1.6rem;
 }
 
 .whatsapp-button:hover {
@@ -83,7 +84,7 @@
 }
 
 .whatsapp-icon {
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 .mobile-menu-button {
@@ -91,10 +92,14 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0;
     color: #333;
     z-index: 1001;
     transition: all 0.3s ease;
+    height: 40px;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 .mobile-menu-button:hover {
@@ -140,7 +145,6 @@
     flex-direction: column;
     padding: 1.5rem;
     gap: 1rem;
-    font-size: 1rem;
 }
 
 .mobile-menu-link {
@@ -148,8 +152,9 @@
     padding: 0.8rem 1rem;
     text-decoration: none;
     color: #333;
-    font-size: 1rem;
+    font-size: 1.6rem;
     transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .mobile-menu-link:hover {
@@ -159,7 +164,6 @@
 
 .mobile-whatsapp {
     display: flex;
-    border-radius: 1rem;
     align-items: center;
     gap: 0.5rem;
     background: #25D366;
@@ -168,6 +172,8 @@
     margin-top: 1rem;
     text-decoration: none;
     transition: background 0.2s ease;
+    border-radius: 6px;
+    font-size: 1.6rem;
 }
 
 .mobile-whatsapp:hover {
@@ -177,8 +183,6 @@
 @media (max-width: 768px) {
     .menu-container {
         padding: 0 1.5rem;
-        display: flex;
-        align-items: center;
     }
 
     .desktop-menu {
@@ -187,11 +191,10 @@
 
     .mobile-menu-button {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        height: 40px;
-        width: 40px;
+    }
+
+    .menu-logo {
+        font-size: 2rem;
     }
 }
 
@@ -200,16 +203,25 @@
         height: 70px;
     }
 
-    .menu-container {
-        padding: 0 1rem;
+    body {
+        padding-top: 70px;
     }
 
-    .menu-logo {
-        font-size: 2rem;
+    .menu-container {
+        padding: 0 1rem;
     }
 
     .mobile-menu {
         width: 260px;
         padding-top: 70px;
+    }
+
+    .menu-logo {
+        font-size: 1.8rem;
+    }
+
+    .mobile-menu-link,
+    .mobile-whatsapp {
+        font-size: 1.4rem;
     }
 }
