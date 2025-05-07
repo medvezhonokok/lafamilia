@@ -23,6 +23,8 @@
     text-align: center;
     gap: 15px;
     padding: 20px;
+    width: 30%;
+    height: fit-content;
     box-sizing: border-box;
 }
 
@@ -37,6 +39,10 @@
 @media (max-width: 768px) {
     .shipping-container {
         padding: 5rem 5%;
+    }
+
+    .shipping-item-container {
+        width: 90%;
     }
 
     .shipping-items-container {
