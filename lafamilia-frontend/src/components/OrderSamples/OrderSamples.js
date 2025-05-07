@@ -116,13 +116,17 @@ const OrderSamples = () => {
     }, [state.errors]);
 
     return (
-        <div className='order-samples-container' onClick={() => setShowForm(!showForm)}>
+        <div className='order-samples-container' onClick={() => {
+            if (!showForm) setShowForm(true)
+        }}>
             <ToastContainer/>
             <div className="form-toggle-button-container">
                 {!showForm && <button
                     type="button"
                     className="form-toggle-button"
-                    onClick={() => setShowForm(!showForm)}
+                    onClick={() => {
+                        if (!showForm) setShowForm(true)
+                    }}
                 >
                     Order Samples
                 </button>
@@ -130,7 +134,6 @@ const OrderSamples = () => {
             </div>
             {showForm && (
                 <form className='order-form' onSubmit={onSubmit} noValidate>
-                    <h1 className='order-title'>Order Samples</h1>
                     <div className='form-grid'>
                         <div className='form-group'>
                             <input
