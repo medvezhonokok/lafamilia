@@ -1,6 +1,7 @@
 package ru.lafamilia.backend.form;
 
 
+import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 import ru.lafamilia.backend.model.FlavorDescriptor;
@@ -21,6 +22,9 @@ public class LotCredentials {
 
     @NotBlank(message = "Department cannot be blank")
     private String department;
+
+    @NotBlank(message = "Farm cannot be blank")
+    private String farm;
 
     @DecimalMin(value = "0.0", message = "Aroma must be between 0 and 10")
     @DecimalMax(value = "10.0", message = "Aroma must be between 0 and 10")
@@ -45,6 +49,22 @@ public class LotCredentials {
     @DecimalMin(value = "0.0", message = "Balance must be between 0 and 10")
     @DecimalMax(value = "10.0", message = "Balance must be between 0 and 10")
     private Double balance;
+
+    @DecimalMin(value = "0.0", message = "Uniformity must be between 0 and 10")
+    @DecimalMax(value = "10.0", message = "Uniformity must be between 0 and 10")
+    private Double uniformity;
+
+    @DecimalMin(value = "0.0", message = "Sweetness must be between 0 and 10")
+    @DecimalMax(value = "10.0", message = "Sweetness must be between 0 and 10")
+    private Double sweetness;
+
+    @DecimalMin(value = "0.0", message = "Clean cup must be between 0 and 10")
+    @DecimalMax(value = "10.0", message = "Clean cup must be between 0 and 10")
+    private Double cleanCup;
+
+    @DecimalMin(value = "0.0", message = "Overall must be between 0 and 10")
+    @DecimalMax(value = "10.0", message = "Overall must be between 0 and 10")
+    private Double overall;
 
     @Positive(message = "Price must be positive")
     private Double price;

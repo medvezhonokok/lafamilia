@@ -58,6 +58,11 @@
         padding: 0 2rem;
     }
 
+    .info-button {
+        padding: 1rem 1.5rem;
+        font-size: 20px;
+    }
+
     .info-content {
         padding-top: 4rem;
     }

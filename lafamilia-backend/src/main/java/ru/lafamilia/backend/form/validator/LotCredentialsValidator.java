@@ -1,7 +1,6 @@
 package ru.lafamilia.backend.form.validator;
 
 import org.springframework.stereotype.Component;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import ru.lafamilia.backend.form.LotCredentials;
@@ -67,18 +66,22 @@ public class LotCredentialsValidator implements Validator {
         validateScoreRange(credentials.getAcidity(), "acidity", errors);
         validateScoreRange(credentials.getBody(), "body", errors);
         validateScoreRange(credentials.getBalance(), "balance", errors);
+        validateScoreRange(credentials.getCleanCup(), "cleanCup", errors);
+        validateScoreRange(credentials.getOverall(), "overall", errors);
+        validateScoreRange(credentials.getSweetness(), "sweetness", errors);
+        validateScoreRange(credentials.getUniformity(), "uniformity", errors);
     }
 
     private void validateScoreRange(Double score, String field, Errors errors) {
         if (score == null) {
             errors.rejectValue(field, field + ".null",
-                    "Score cannot be null");
+                    "Value cannot be null");
             return;
         }
 
         if (score < 0 || score > 10) {
             errors.rejectValue(field, field + ".invalid",
-                    "Score must be between 0 and 10");
+                    "Value must be between 0 and 10");
         }
     }
 

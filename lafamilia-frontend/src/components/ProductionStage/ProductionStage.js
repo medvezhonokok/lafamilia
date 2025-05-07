@@ -40,7 +40,7 @@ const ProductionStage = () => {
                 {stages.map((stage, index) => (
                     <div key={index} className="stage-card">
                         <img src={stage.image} alt={stage.name} />
-                        <p style={{fontSize: "20px", textAlign: 'left'}}>{stage.text}</p>
+                        <p className='text' style={{fontSize: "20px", textAlign: 'left'}}>{stage.text}</p>
                     </div>
                 ))}
             </div>

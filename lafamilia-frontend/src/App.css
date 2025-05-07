@@ -7,13 +7,17 @@
 }
 
 .text {
-    font-size: 30px !important;
+    font-size: 25px !important;
     line-height: normal;
 }
 
 @media (max-width: 768px) {
     .text {
-        font-size: 25px !important;
+        font-size: 15px !important;
+    }
+
+    h2 {
+        font-size: 26px !important;
     }
 }
 

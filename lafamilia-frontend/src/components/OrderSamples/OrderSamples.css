@@ -60,7 +60,7 @@
     padding: 1rem;
     border-radius: 2rem;
     border: none;
-    font-size: 1.5rem;
+    font-size: 20px;
     resize: vertical;
     min-height: 120px;
     background: #f8f8f8;
@@ -142,4 +142,26 @@
     .submit-button {
         padding: 1rem 2rem;
     }
+}
+
+.form-toggle-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-toggle-button {
+    background: none;
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.form-toggle-button:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
 }

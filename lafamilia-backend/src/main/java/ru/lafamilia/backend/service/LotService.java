@@ -35,6 +35,7 @@ public class LotService {
         lot.setVariety(credentials.getVariety());
         lot.setProcessing(credentials.getProcessing());
         lot.setDepartment(credentials.getDepartment());
+        lot.setFarm(credentials.getFarm());
         lot.setAroma(credentials.getAroma());
         lot.setFlavor(credentials.getFlavor());
         lot.setAftertaste(credentials.getAftertaste());
@@ -42,6 +43,10 @@ public class LotService {
         lot.setBody(credentials.getBody());
         lot.setBalance(credentials.getBalance());
         lot.setPrice(credentials.getPrice());
+        lot.setOverall(credentials.getOverall());
+        lot.setSweetness(credentials.getSweetness());
+        lot.setCleanCup(credentials.getCleanCup());
+        lot.setUniformity(credentials.getUniformity());
         lot.setDescription(credentials.getDescription());
         lot.getFlavorDescriptors().clear();
 

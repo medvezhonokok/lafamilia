@@ -4,9 +4,6 @@ import './About.css';
 const About = () => {
     return (
         <div className='about-container'>
-            <div className='columbian-coffee-exporter'>
-                Colombian coffee <span className='green'>exporter</span>
-            </div>
             <h2 style={{fontSize: "4rem"}}><span className='green'>A</span>bout</h2>
             <div className='about-text-containers'>
                 <div className='text'>

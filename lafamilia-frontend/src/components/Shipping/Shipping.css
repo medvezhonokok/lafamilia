@@ -35,9 +35,21 @@
 }
 
 @media (max-width: 768px) {
+    .shipping-container {
+        padding: 5rem 5%;
+    }
+
     .shipping-items-container {
         flex-direction: column;
         align-items: center;
         gap: 3rem;
+    }
+
+    .shipping-item-weight {
+        background: #B33A31;
+        font-size: 20px !important;
+        border-radius: 2rem;
+        width: 9rem;
+        color: white;
     }
 }

@@ -6,6 +6,8 @@ import './OrderSamples.css';
 
 const OrderSamples = () => {
     const [state, handleSubmit] = useForm("manoeyrp");
+    const [showForm, setShowForm] = useState(false);
+
     const [formErrors, setFormErrors] = useState({});
     const [touchedFields, setTouchedFields] = useState({});
     const [formData, setFormData] = useState({
@@ -16,7 +18,6 @@ const OrderSamples = () => {
         info: ''
     });
 
-    // Валидация формы
     const validateForm = () => {
         const errors = {};
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,7 +46,6 @@ const OrderSamples = () => {
             [name]: value
         }));
 
-        // Валидация при изменении (только для тронутых полей)
         if (touchedFields[name]) {
             validateForm();
         }
@@ -63,7 +63,6 @@ const OrderSamples = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        // Помечаем все поля как тронутые перед валидацией
         const allFieldsTouched = Object.keys(formData).reduce((acc, field) => {
             acc[field] = true;
             return acc;
@@ -117,74 +116,84 @@ const OrderSamples = () => {
     }, [state.errors]);
 
     return (
-        <div className='order-samples-container'>
-            <ToastContainer />
-            <h1 className='order-title'>Order Samples</h1>
+        <div className='order-samples-container' onClick={() => setShowForm(!showForm)}>
+            <ToastContainer/>
+            <div className="form-toggle-button-container">
+                {!showForm && <button
+                    type="button"
+                    className="form-toggle-button"
+                    onClick={() => setShowForm(!showForm)}
+                >
+                    Order Samples
+                </button>
+                }
+            </div>
+            {showForm && (
+                <form className='order-form' onSubmit={onSubmit} noValidate>
+                    <h1 className='order-title'>Order Samples</h1>
+                    <div className='form-grid'>
+                        <div className='form-group'>
+                            <input
+                                name='name'
+                                type='text'
+                                placeholder='Name *'
+                                value={formData.name}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                className={`form-input ${touchedFields.name && formErrors.name ? 'error' : ''}`}
+                                required
+                            />
+                            {touchedFields.name && formErrors.name && (
+                                <span className="error-message">{formErrors.name}</span>
+                            )}
+                        </div>
 
-            <form className='order-form' onSubmit={onSubmit} noValidate>
-                <div className='form-grid'>
-                    <div className='form-group'>
-                        <input
-                            name='name'
-                            type='text'
-                            placeholder='Name *'
-                            value={formData.name}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            className={`form-input ${touchedFields.name && formErrors.name ? 'error' : ''}`}
-                            required
-                        />
-                        {touchedFields.name && formErrors.name && (
-                            <span className="error-message">{formErrors.name}</span>
-                        )}
+                        <div className='form-group'>
+                            <input
+                                name='phone'
+                                type='tel'
+                                placeholder='Phone *'
+                                value={formData.phone}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                className={`form-input ${touchedFields.phone && formErrors.phone ? 'error' : ''}`}
+                                required
+                            />
+                            {touchedFields.phone && formErrors.phone && (
+                                <span className="error-message">{formErrors.phone}</span>
+                            )}
+                        </div>
+
+                        <div className='form-group'>
+                            <input
+                                name='email'
+                                type='email'
+                                placeholder='Email *'
+                                value={formData.email}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                className={`form-input ${touchedFields.email && formErrors.email ? 'error' : ''}`}
+                                required
+                            />
+                            {touchedFields.email && formErrors.email && (
+                                <span className="error-message">{formErrors.email}</span>
+                            )}
+                        </div>
+
+                        <div className='form-group'>
+                            <input
+                                name='company'
+                                type='text'
+                                placeholder='Company Name'
+                                value={formData.company}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                className='form-input'
+                            />
+                        </div>
                     </div>
 
-                    <div className='form-group'>
-                        <input
-                            name='phone'
-                            type='tel'
-                            placeholder='Phone *'
-                            value={formData.phone}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            className={`form-input ${touchedFields.phone && formErrors.phone ? 'error' : ''}`}
-                            required
-                        />
-                        {touchedFields.phone && formErrors.phone && (
-                            <span className="error-message">{formErrors.phone}</span>
-                        )}
-                    </div>
-
-                    <div className='form-group'>
-                        <input
-                            name='email'
-                            type='email'
-                            placeholder='Email *'
-                            value={formData.email}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            className={`form-input ${touchedFields.email && formErrors.email ? 'error' : ''}`}
-                            required
-                        />
-                        {touchedFields.email && formErrors.email && (
-                            <span className="error-message">{formErrors.email}</span>
-                        )}
-                    </div>
-
-                    <div className='form-group'>
-                        <input
-                            name='company'
-                            type='text'
-                            placeholder='Company Name'
-                            value={formData.company}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            className='form-input'
-                        />
-                    </div>
-                </div>
-
-                <div className='form-group full-width'>
+                    <div className='form-group full-width'>
                     <textarea
                         name='info'
                         placeholder='Additional Information'
@@ -194,25 +203,26 @@ const OrderSamples = () => {
                         className='form-textarea'
                         rows={4}
                     />
-                </div>
+                    </div>
 
-                <div className='button-container'>
-                    <button
-                        type='submit'
-                        className='submit-button'
-                        disabled={state.submitting}
-                    >
-                        {state.submitting ? (
-                            <>
-                                <span className="spinner"></span>
-                                Sending...
-                            </>
-                        ) : (
-                            'Submit Request'
-                        )}
-                    </button>
-                </div>
-            </form>
+                    <div className='button-container'>
+                        <button
+                            type='submit'
+                            className='submit-button'
+                            disabled={state.submitting}
+                        >
+                            {state.submitting ? (
+                                <>
+                                    <span className="spinner"></span>
+                                    Sending...
+                                </>
+                            ) : (
+                                'Submit Request'
+                            )}
+                        </button>
+                    </div>
+                </form>
+            )}
         </div>
     );
 };

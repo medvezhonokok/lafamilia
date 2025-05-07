@@ -22,6 +22,10 @@ const AdminPage = () => {
         body: 0,
         balance: 0,
         price: 0,
+        uniformity: 0,
+        sweetness: 0,
+        cleanCup: 0,
+        overall: 0,
         description: '',
         flavorDescriptorIds: []
     });
@@ -277,6 +281,17 @@ const AdminPage = () => {
                         </div>
 
                         <div className="form-group">
+                            <label>Farm:</label>
+                            <input
+                                type="text"
+                                value={newLot.farm}
+                                onChange={(e) => setNewLot({...newLot, farm: e.target.value})}
+                                className={backendErrors.farm ? 'error-field' : ''}
+                            />
+                            {renderFieldError('farm')}
+                        </div>
+
+                        <div className="form-group">
                             <label>Aroma:</label>
                             <input
                                 type="number"
@@ -358,6 +373,62 @@ const AdminPage = () => {
                                 className={backendErrors.balance ? 'error-field' : ''}
                             />
                             {renderFieldError('balance')}
+                        </div>
+
+                        <div className="form-group">
+                            <label>Sweetness:</label>
+                            <input
+                                type="number"
+                                step="0.1"
+                                min="0"
+                                max="10"
+                                value={newLot.sweetness}
+                                onChange={(e) => setNewLot({...newLot, sweetness: parseFloat(e.target.value)})}
+                                className={backendErrors.sweetness ? 'error-field' : ''}
+                            />
+                            {renderFieldError('sweetness')}
+                        </div>
+
+                        <div className="form-group">
+                            <label>Clean cup:</label>
+                            <input
+                                type="number"
+                                step="0.1"
+                                min="0"
+                                max="10"
+                                value={newLot.cleanCup}
+                                onChange={(e) => setNewLot({...newLot, cleanCup: parseFloat(e.target.value)})}
+                                className={backendErrors.cleanCup ? 'error-field' : ''}
+                            />
+                            {renderFieldError('cleanCup')}
+                        </div>
+
+                        <div className="form-group">
+                            <label>Overall:</label>
+                            <input
+                                type="number"
+                                step="0.1"
+                                min="0"
+                                max="10"
+                                value={newLot.overall}
+                                onChange={(e) => setNewLot({...newLot, overall: parseFloat(e.target.value)})}
+                                className={backendErrors.overall ? 'error-field' : ''}
+                            />
+                            {renderFieldError('overall')}
+                        </div>
+
+                        <div className="form-group">
+                            <label>Uniformity:</label>
+                            <input
+                                type="number"
+                                step="0.1"
+                                min="0"
+                                max="10"
+                                value={newLot.uniformity}
+                                onChange={(e) => setNewLot({...newLot, uniformity: parseFloat(e.target.value)})}
+                                className={backendErrors.uniformity ? 'error-field' : ''}
+                            />
+                            {renderFieldError('uniformity')}
                         </div>
 
                         <div className="form-group">
@@ -457,6 +528,17 @@ const AdminPage = () => {
                         </div>
 
                         <div className="form-group">
+                            <label>Farm:</label>
+                            <input
+                                type="text"
+                                value={editingLot.farm}
+                                onChange={(e) => setEditingLot({...editingLot, farm: e.target.value})}
+                                className={backendErrors.farm ? 'error-field' : ''}
+                            />
+                            {renderFieldError('farm')}
+                        </div>
+
+                        <div className="form-group">
                             <label>Aroma:</label>
                             <input
                                 type="number"
@@ -524,6 +606,62 @@ const AdminPage = () => {
                                 className={backendErrors.body ? 'error-field' : ''}
                             />
                             {renderFieldError('body')}
+                        </div>
+
+                        <div className="form-group">
+                            <label>Uniformity:</label>
+                            <input
+                                type="number"
+                                step="0.1"
+                                min="0"
+                                max="10"
+                                value={editingLot.uniformity}
+                                onChange={(e) => setEditingLot({...editingLot, uniformity: parseFloat(e.target.value)})}
+                                className={backendErrors.uniformity ? 'error-field' : ''}
+                            />
+                            {renderFieldError('uniformity')}
+                        </div>
+
+                        <div className="form-group">
+                            <label>Sweetness:</label>
+                            <input
+                                type="number"
+                                step="0.1"
+                                min="0"
+                                max="10"
+                                value={editingLot.sweetness}
+                                onChange={(e) => setEditingLot({...editingLot, sweetness: parseFloat(e.target.value)})}
+                                className={backendErrors.sweetness ? 'error-field' : ''}
+                            />
+                            {renderFieldError('sweetness')}
+                        </div>
+
+                        <div className="form-group">
+                            <label>Clean cup:</label>
+                            <input
+                                type="number"
+                                step="0.1"
+                                min="0"
+                                max="10"
+                                value={editingLot.cleanCup}
+                                onChange={(e) => setEditingLot({...editingLot, cleanCup: parseFloat(e.target.value)})}
+                                className={backendErrors.cleanCup ? 'error-field' : ''}
+                            />
+                            {renderFieldError('cleanCup')}
+                        </div>
+
+                        <div className="form-group">
+                            <label>Overall:</label>
+                            <input
+                                type="number"
+                                step="0.1"
+                                min="0"
+                                max="10"
+                                value={editingLot.overall}
+                                onChange={(e) => setEditingLot({...editingLot, overall: parseFloat(e.target.value)})}
+                                className={backendErrors.overall ? 'error-field' : ''}
+                            />
+                            {renderFieldError('overall')}
                         </div>
 
                         <div className="form-group">

@@ -11,7 +11,6 @@ import Footer from "../Footer/Footer";
 const IndexPage = () => {
     return (
         <div>
-            <Menu index={true}/>
             <Main/>
             <About/>
             <Shipping/>

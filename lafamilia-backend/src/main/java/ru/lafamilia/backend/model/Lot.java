@@ -1,12 +1,16 @@
 package ru.lafamilia.backend.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import ru.lafamilia.backend.model.enums.LotProcessing;
 import ru.lafamilia.backend.model.enums.LotVariety;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "lots")
 public class Lot {
@@ -24,6 +28,9 @@ public class Lot {
 
     @Column(nullable = false)
     private String department;
+
+    @Column(nullable = false)
+    private String farm;
 
     @Column
     private Double aroma;
@@ -47,7 +54,21 @@ public class Lot {
     private Double price;
 
     @Column
+    private Double uniformity;
+
+    @Column
+    private Double sweetness;
+
+    @Column
+    private Double cleanCup;
+
+    @Column
+    private Double overall;
+
+    @Column
     private String description;
+
+    private Double qGrade;
 
     @ManyToMany
     @JoinTable(
@@ -57,107 +78,11 @@ public class Lot {
     )
     private Set<FlavorDescriptor> flavorDescriptors = new HashSet<>();
 
-    public Long getId() {
-        return id;
+    public Double getqGrade() {
+        return (double) (int) (aroma + flavor + aftertaste + acidity + body + balance + uniformity + cleanCup + overall + sweetness);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LotVariety getVariety() {
-        return variety;
-    }
-
-    public void setVariety(LotVariety lotVariety) {
-        this.variety = lotVariety;
-    }
-
-    public LotProcessing getProcessing() {
-        return processing;
-    }
-
-    public void setProcessing(LotProcessing processing) {
-        this.processing = processing;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public Set<FlavorDescriptor> getFlavorDescriptors() {
-        return flavorDescriptors;
-    }
-
-    public void setFlavorDescriptors(Set<FlavorDescriptor> flavorDescriptors) {
-        this.flavorDescriptors = flavorDescriptors;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getAroma() {
-        return aroma;
-    }
-
-    public void setAroma(Double aroma) {
-        this.aroma = aroma;
-    }
-
-    public Double getFlavor() {
-        return flavor;
-    }
-
-    public void setFlavor(Double flavor) {
-        this.flavor = flavor;
-    }
-
-    public Double getAftertaste() {
-        return aftertaste;
-    }
-
-    public void setAftertaste(Double aftertaste) {
-        this.aftertaste = aftertaste;
-    }
-
-    public Double getAcidity() {
-        return acidity;
-    }
-
-    public void setAcidity(Double acidity) {
-        this.acidity = acidity;
-    }
-
-    public Double getBody() {
-        return body;
-    }
-
-    public void setBody(Double body) {
-        this.body = body;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setqGrade(Double qGrade) {
+        this.qGrade = qGrade;
     }
 }

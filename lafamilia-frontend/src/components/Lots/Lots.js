@@ -36,7 +36,7 @@ const Lots = ({lots}) => {
 
         const series = descriptors.map(desc => ({
             x: desc.name,
-            y: 100,
+            y: Math.floor(Math.random() * 41) + 60,
             fillColor: desc.colorHex
         }));
 
@@ -72,7 +72,15 @@ const Lots = ({lots}) => {
                             offsetY: 5
                         },
                         value: {
-                            show: false
+                            show: true,
+                            formatter: function (val) {
+                                return val;
+                            },
+                            fontSize: '14px',
+                            fontFamily: 'Arial, sans-serif',
+                            fontWeight: 600,
+                            color: '#333',
+                            offsetY: -20
                         },
                         total: {
                             show: false
@@ -105,6 +113,9 @@ const Lots = ({lots}) => {
                             dataLabels: {
                                 name: {
                                     fontSize: '10px'
+                                },
+                                value: {
+                                    fontSize: '12px'
                                 }
                             }
                         }
@@ -124,11 +135,11 @@ const Lots = ({lots}) => {
                 <div className="descriptor-labels">
                     {series.map((descriptor, index) => (
                         <div key={index} className="descriptor-label">
-                            <span
-                                className="color-marker"
-                                style={{backgroundColor: descriptor.fillColor}}
-                            />
-                            <span className="descriptor-name">{descriptor.x}</span>
+                        <span
+                            className="color-marker"
+                            style={{backgroundColor: descriptor.fillColor}}
+                        />
+                            <span className="descriptor-name">{descriptor.x} ({descriptor.y}%)</span>
                         </div>
                     ))}
                 </div>
@@ -160,10 +171,11 @@ const Lots = ({lots}) => {
                 </div>
 
                 <div className="filter-group">
-                    <img src={loop}/>
+                    <img src={loop} alt={'loop'}/>
                     <input
                         id="variety-search"
                         type="text"
+                        placeholder={" Variety..."}
                         value={varietySearch}
                         onChange={(e) => setVarietySearch(e.target.value)}
                     />
@@ -173,10 +185,15 @@ const Lots = ({lots}) => {
                 {filteredLots.map((lot) => (
                     <div
                         key={lot.id}
+                        role="button"
+                        tabIndex={0}
                         className={`lot-card ${expandedLotId === lot.id ? 'expanded' : ''}`}
                         onClick={() => toggleLotExpand(lot.id)}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') toggleLotExpand(lot.id);
+                        }}
                     >
-                        <div className={`card-content ${expandedLotId === lot.id ? 'expanded' : ''}`}>
+                        <div className={`card-content text ${expandedLotId === lot.id ? 'expanded' : ''}`}>
                             {expandedLotId !== lot.id ? (
                                 <>
                                     <div className='lot-header'>
@@ -185,40 +202,29 @@ const Lots = ({lots}) => {
                                             justifyContent: "space-between"
                                         }}>
                                             <div>{lot.price + "$ for kg"} <span
+                                                className={'lot-info-popup'}
                                                 style={{fontSize: "18px", color: "grey"}}>EXW</span></div>
-                                            <p style={{margin: "0"}}>Q87</p>
+                                            <p style={{margin: "0"}}>{"Q" + lot.qGrade}</p>
                                         </div>
-                                        <div style={{
-                                            display: 'flex',
-                                            flexDirection: 'row',
-                                            justifyContent: 'space-between'
-                                        }}>
+                                        <div className='lot-variety-farm'>
                                             {formatEnumText(lot.variety)}
-                                            <span>El Paraiso</span>
+                                            <span>{lot.farm}</span>
                                         </div>
                                     </div>
 
                                     <div className='lot-header-2'>
-                                        <div style={{padding: "20px"}}>
+                                        <div>
                                             <div style={{display: 'flex', flexDirection: 'column'}}>
-                                                <span style={{
-                                                    fontSize: "18px",
-                                                    height: "28px",
-                                                    color: "#766F6B",
-                                                }}>Region</span>
+                                                <span className='span-lot-card'>Region</span>
                                                 {formatEnumText(lot.department)}
                                             </div>
                                             <div style={{display: 'flex', flexDirection: 'column'}}>
-                                                <span style={{
-                                                    fontSize: "18px",
-                                                    height: "28px",
-                                                    color: "#766F6B",
-                                                }}>Process</span>
+                                                <span className='span-lot-card'>Process</span>
                                                 {formatEnumText(lot.processing)}
                                             </div>
                                         </div>
                                     </div>
-                                    <div style={{padding: "20px", fontSize: "24px", lineHeight: "normal"}}>
+                                    <div className={'lot-description text'}>
                                         {lot.description}
                                     </div>
                                 </>
