@@ -15,12 +15,6 @@ const Menu = ({index}) => {
                     <p className='menu-logo' onClick={() => window.location.href = '/'}>
                         La Familia Café
                     </p>
-                    {/*<img*/}
-                    {/*    src={logo}*/}
-                    {/*    alt='logo'*/}
-                    {/*    className='menu-logo'*/}
-                    {/*    onClick={() => window.location.href = '/'}*/}
-                    {/*/>*/}
 
                     <div className='desktop-menu'>
                         <a href='/' className={index ? 'menu-link active' : 'menu-link'}>About Us</a>
@@ -53,7 +47,7 @@ const Menu = ({index}) => {
                     <a href='/shop' onClick={() => setIsOpen(false)} className="mobile-menu-link">
                         Lots
                     </a>
-                    <a href='/#shipping' className="mobile-menu-link">Shipping</a>
+                    <a href='/#shipping' className="mobile-menu-link" onClick={() => setIsOpen(false)}>Shipping</a>
                     <a href="https://wa.me/573176444299" className='mobile-whatsapp' onClick={() => setIsOpen(false)}>
                         <FaWhatsapp className="whatsapp-icon"/> Contact Us
                     </a>
