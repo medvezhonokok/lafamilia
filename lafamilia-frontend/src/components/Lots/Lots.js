@@ -139,7 +139,7 @@ const Lots = ({lots}) => {
                             className="color-marker"
                             style={{backgroundColor: descriptor.fillColor}}
                         />
-                            <span className="descriptor-name">{descriptor.x} ({descriptor.y}%)</span>
+                            <span className="descriptor-name">{descriptor.x}</span>
                         </div>
                     ))}
                 </div>

@@ -64,7 +64,7 @@
 .footer-links {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1.2rem;
     min-width: 120px;
 }
 
@@ -83,10 +83,22 @@
 
 .footer-copyright {
     font-size: 0.9rem;
-    opacity: 0.8;
+    background: #196e46;
     width: 100%;
     text-align: center;
     padding: 2rem 1rem 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.contact-icon {
+    font-size: 1.2rem;
+    color: white;
+    flex-shrink: 0;
 }
 
 @media (max-width: 900px) {
@@ -114,7 +126,17 @@
     }
 
     .footer-links {
-        align-items: center;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .about-lots {
+        display: none;
+        flex-direction: row;;
+    }
+
+    .contact-item {
+        justify-content: center;
     }
 }
 
@@ -133,5 +155,9 @@
 
     .footer-links-group {
         gap: 1.5rem;
+    }
+
+    .contact-icon {
+        font-size: 1rem;
     }
 }
