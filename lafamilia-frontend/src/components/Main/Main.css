@@ -1,8 +1,5 @@
 .main-container {
-    background-image: url('./../../assets/indexBackground.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -10,9 +7,28 @@
     padding: 20px;
     box-sizing: border-box;
     overflow-x: hidden;
-    position: relative;
     margin: 0;
     text-align: center;
+}
+
+.main-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./../../assets/indexBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1.2s ease-out;
+}
+
+.main-container.loaded::before {
+    opacity: 1;
 }
 
 .main-container-content {
@@ -27,7 +43,14 @@
     width: 100%;
     max-width: 480px;
     height: auto;
-    transition: transform 0.3s ease;
+    transition: all 0.8s ease-out;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.main-container img.animate {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .columbian-coffee-exporter {
@@ -39,7 +62,14 @@
     line-height: 1.2;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     letter-spacing: 1px;
-    animation: fadeInUp 1s ease;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.8s ease-out 0.2s;
+}
+
+.columbian-coffee-exporter.animate {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .shop-coffee-button {
@@ -52,12 +82,29 @@
     font-weight: 600;
     cursor: pointer;
     white-space: nowrap;
-    transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.8s ease-out 0.4s, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.shop-coffee-button.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.shop-coffee-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
 @media (max-width: 768px) {
     .main-container-content {
@@ -66,6 +113,7 @@
 
     .columbian-coffee-exporter {
         font-size: 2.5rem;
+        margin-top: -6rem;
     }
 
     .shop-coffee-button {
@@ -80,8 +128,8 @@
     }
 
     .columbian-coffee-exporter {
-        margin-top: -5rem;
-        font-size: 1.5rem;
+        margin-top: -4rem;
+        font-size: 1.8rem;
         margin-bottom: 20px;
     }
 

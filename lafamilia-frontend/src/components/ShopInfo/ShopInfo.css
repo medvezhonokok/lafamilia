@@ -1,8 +1,5 @@
 .shop-container {
-    background-image: url('./../../assets/shopBackground.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
     min-height: 100vh;
     width: 100vw;
     max-width: 100%;
@@ -14,8 +11,27 @@
     padding: 20px;
     box-sizing: border-box;
     overflow-x: hidden;
-    position: relative;
     margin: 0;
+}
+
+.shop-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./../../assets/shopBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.shop-container.loaded::before {
+    opacity: 1;
 }
 
 .shop-info {
