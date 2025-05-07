@@ -4,9 +4,22 @@ import logo from '../../assets/textLogo.svg';
 import {FaBars, FaTimes, FaWhatsapp} from 'react-icons/fa';
 import {Link} from "react-router-dom";
 import IndexPage from "../IndexPage/IndexPage";
+import { useNavigate } from 'react-router-dom';
 
 const Menu = ({index}) => {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const scrollToShipping = () => {
+        setIsOpen(false);
+        navigate('/'); // Переходим на главную
+        setTimeout(() => { // Даем время на рендер
+            const element = document.getElementById('shipping');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
+    };
 
     return (
         <>
@@ -47,7 +60,7 @@ const Menu = ({index}) => {
                     <a href='/shop' onClick={() => setIsOpen(false)} className="mobile-menu-link">
                         Lots
                     </a>
-                    <a href='/#shipping' className="mobile-menu-link" onClick={() => setIsOpen(false)}>Shipping</a>
+                    <a href='/#shipping' className="mobile-menu-link" onClick={scrollToShipping}>Shipping</a>
                     <a href="https://wa.me/573176444299" className='mobile-whatsapp' onClick={() => setIsOpen(false)}>
                         <FaWhatsapp className="whatsapp-icon"/> Contact Us
                     </a>
