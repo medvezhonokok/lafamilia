@@ -201,9 +201,8 @@ const Lots = ({lots}) => {
                                             display: "flex",
                                             justifyContent: "space-between"
                                         }}>
-                                            <div>{lot.price + "$ for kg"} <span
-                                                className={'lot-info-popup'}
-                                                style={{fontSize: "18px", color: "grey"}}>EXW</span></div>
+                                            <div>{"from " + lot.price + "$/kg"}
+                                            </div>
                                             <p style={{margin: "0"}}>{"Q" + lot.qGrade}</p>
                                         </div>
                                         <div className='lot-variety-farm'>

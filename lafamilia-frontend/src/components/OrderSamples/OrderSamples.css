@@ -162,6 +162,5 @@
 }
 
 .form-toggle-button:hover {
-    background: #e0e0e0;
     transform: translateY(-2px);
 }
