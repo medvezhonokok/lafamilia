@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import './Main.css';
 import whiteLogo from "../../assets/whiteLogo.svg";
-import backgroundImage from "../../assets/indexBackground.jpg";
+import backgroundImage from "../../assets/indexBackground.webp";
 
 const Main = () => {
     const [isLoaded, setIsLoaded] = useState(false);

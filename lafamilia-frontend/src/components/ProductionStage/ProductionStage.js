@@ -1,10 +1,10 @@
 import React from 'react';
 import './ProductionStage.css';
-import stage1 from "../../assets/stage1.svg";
-import stage2 from "../../assets/stage2.svg";
-import stage3 from "../../assets/stage3.svg";
-import stage4 from "../../assets/stage4.svg";
-import stage5 from "../../assets/stage5.svg";
+import stage1 from "../../assets/stage1.png";
+import stage2 from "../../assets/stage2.png";
+import stage3 from "../../assets/stage3.png";
+import stage4 from "../../assets/stage4.png";
+import stage5 from "../../assets/stage5.png";
 
 const ProductionStage = () => {
     const stages = [
