@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './ShopInfo.css';
-import shopBackground from '../../assets/shopBackground.jpg';
+import shopBackground from '../../assets/shopBackground.webp';
 
 const ShopInfo = () => {
     const [backgroundLoaded, setBackgroundLoaded] = useState(false);
