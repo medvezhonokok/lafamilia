@@ -29,7 +29,7 @@ const Shipping = ({isMobile}) => {
 
     return (
         <div className='shipping-container' id='shipping'>
-            <h2 style={{fontSize: "4rem"}}><span className='green'>W</span>orldwide Shipping</h2>
+            <h2 style={{fontSize: "4rem"}}><span className='red'>W</span>orldwide Shipping</h2>
             <div className='text shipping-description-container'>
                 <div className='shipping-text-2'>
                     We addopt flexible approach when working with clients, offerinf different delivery options

@@ -79,7 +79,7 @@ public class Lot {
     private Set<FlavorDescriptor> flavorDescriptors = new HashSet<>();
 
     public Double getqGrade() {
-        return (double) (int) (aroma + flavor + aftertaste + acidity + body + balance + uniformity + cleanCup + overall + sweetness);
+        return aroma + flavor + aftertaste + acidity + body + balance + uniformity + cleanCup + overall + sweetness;
     }
 
     public void setqGrade(Double qGrade) {

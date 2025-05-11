@@ -194,52 +194,53 @@ const Lots = ({lots}) => {
                         }}
                     >
                         <div className={`card-content text ${expandedLotId === lot.id ? 'expanded' : ''}`}>
-                            {expandedLotId !== lot.id ? (
-                                <>
-                                    <div className='lot-header'>
-                                        <div style={{
-                                            display: "flex",
-                                            justifyContent: "space-between"
-                                        }}>
-                                            <div>{"from " + lot.price + "$/kg"}
+                            {expandedLotId !== lot.id
+                                ? (
+                                    <>
+                                        <div className='lot-header'>
+                                            <div style={{
+                                                display: "flex",
+                                                justifyContent: "space-between"
+                                            }}>
+                                                <div style={{display: 'flex', flexDirection: 'column'}}>
+                                                    <div>{formatEnumText(lot.processing)}</div>
+                                                    <div>{formatEnumText(lot.variety)}</div>
+                                                </div>
+                                                <p style={{margin: "0"}}>{"Q" + lot.qGrade.toFixed(1)}</p>
                                             </div>
-                                            <p style={{margin: "0"}}>{"Q" + lot.qGrade}</p>
                                         </div>
-                                        <div className='lot-variety-farm'>
-                                            {formatEnumText(lot.variety)}
-                                            <span>{lot.farm}</span>
-                                        </div>
-                                    </div>
 
-                                    <div className='lot-header-2'>
-                                        <div>
+                                        <div className='lot-header-2'>
                                             <div style={{display: 'flex', flexDirection: 'column'}}>
                                                 <span className='span-lot-card'>Region</span>
                                                 {formatEnumText(lot.department)}
                                             </div>
                                             <div style={{display: 'flex', flexDirection: 'column'}}>
-                                                <span className='span-lot-card'>Process</span>
-                                                {formatEnumText(lot.processing)}
+                                                <span className='span-lot-card'>Farm</span>
+                                                {lot.farm}
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className={'lot-description text'}>
-                                        {lot.description}
-                                    </div>
-                                </>
-                            ) : (
-                                <div className="expanded-view">
+                                        <div className={'lot-description text'}>
+                                            {lot.description}
+                                        </div>
+
+                                        <div className={'lot-price text'}>
+                                            {"from " + lot.price + "$/kg"}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="expanded-view">
                                     <div className="ratings-grid">
-                                        {['Aroma', 'Flavor', 'Aftertaste', 'Acidity', 'Body', 'Balance'].map((item) => (
-                                            <div key={item} className="rating-item">
-                                                <span>{item}</span>
-                                                {lot[item.toLowerCase()]}
-                                            </div>
-                                        ))}
+                                            {['Aroma', 'Flavor', 'Aftertaste', 'Acidity', 'Body', 'Balance'].map((item) => (
+                                                <div key={item} className="rating-item">
+                                                    <span>{item}</span>
+                                                    {lot[item.toLowerCase()]}
+                                                </div>
+                                            ))}
+                                        </div>
+                                        {renderFlavorWheel(lot.flavorDescriptors)}
                                     </div>
-                                    {renderFlavorWheel(lot.flavorDescriptors)}
-                                </div>
-                            )}
+                                )}
                         </div>
                     </div>
                 ))}

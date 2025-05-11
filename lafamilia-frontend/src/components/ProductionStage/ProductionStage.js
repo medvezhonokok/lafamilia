@@ -33,7 +33,7 @@ const ProductionStage = () => {
     return (
         <div className='production-stage-container'>
             <h2 style={{ fontSize: "4rem" }}>
-                <span className='green'>P</span>roduction stages
+                <span className='red'>P</span>roduction stages
             </h2>
 
             <div className="stages-grid">

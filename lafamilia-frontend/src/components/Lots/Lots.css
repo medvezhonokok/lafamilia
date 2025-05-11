@@ -12,7 +12,7 @@
 
 .lot-card {
     font-size: 30px;
-    border: 3px solid #186E46;
+    border: 2px solid black;
     border-radius: 1rem;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,7 @@
 
 .lot-header {
     color: white;
-    background: #B33A31;
+    background: #D81921;
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -32,7 +32,7 @@
 }
 
 .lot-description {
-    padding: 5px 20px;
+    padding: 20px;
     font-size: 24px;
     line-height: normal;
 }
@@ -64,8 +64,23 @@
     }
 }
 
+.card-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+}
+
+.lot-price {
+    border-top: 2px solid black;
+    padding: 5px 20px;
+    font-size: 24px;
+    line-height: normal;
+    margin-top: auto;
+}
 
 .lot-card {
+    height: 100%;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -175,7 +190,7 @@
     }
 
     .ratings-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         font-size: 18px;
     }
 
@@ -289,6 +304,7 @@
         padding: 5px 12px;
     }
 
+    .lot-price,
     .lot-description {
         font-size: 13px !important;
         padding: 5px 12px !important;
@@ -350,7 +366,10 @@
     }
 
     .rating-item {
-        font-size: 12px;
+        border-bottom: 1px solid black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .descriptor-label {

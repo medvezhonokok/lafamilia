@@ -29,7 +29,7 @@
 }
 
 .shipping-item-weight {
-    background: #B33A31;
+    background: #D81921;
     font-size: 30px;
     border-radius: 2rem;
     width: 12rem;
@@ -52,7 +52,7 @@
     }
 
     .shipping-item-weight {
-        background: #B33A31;
+        background: #D81921;
         font-size: 20px !important;
         border-radius: 2rem;
         width: 9rem;

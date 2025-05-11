@@ -1,5 +1,5 @@
 .footer-container {
-    background-image: url('../../assets/footerBackground.svg');
+    background-image: url('../../assets/footerBackground.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -83,7 +83,7 @@
 
 .footer-copyright {
     font-size: 0.9rem;
-    background: #196e46;
+    background: #D81921;
     width: 100%;
     text-align: center;
     padding: 2rem 1rem 1rem;
